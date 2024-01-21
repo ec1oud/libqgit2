@@ -27,6 +27,8 @@
 
 #include "private/pathcodec.h"
 
+#include <QtCore/QRegularExpression>
+
 namespace LibQGit2
 {
 
@@ -56,13 +58,13 @@ QString Commit::message() const
 
 QString Commit::shortMessage(int maxLen) const
 {
-    return message().left(maxLen).split(QRegExp("(\\r|\\n)")).first();
+    return message().left(maxLen).split(QRegularExpression("(\\r|\\n)")).first();
 }
 
 QDateTime Commit::dateTime() const
 {
     QDateTime dateTime;
-    dateTime.setTime_t(git_commit_time(data()));
+    dateTime.setSecsSinceEpoch(git_commit_time(data()));
     return dateTime;
 }
 

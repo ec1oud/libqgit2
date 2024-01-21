@@ -43,7 +43,7 @@ if(WIN32) # Dll's into bin
     set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 endif()
 
-find_package(Qt5 5.14 REQUIRED Core Network)
+find_package(Qt6 6.2 REQUIRED Core Network)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBGIT2 "libgit2>=1.0" REQUIRED IMPORTED_TARGET)
@@ -93,7 +93,7 @@ message(STATUS)
 # Compile and link libqgit2
 add_definitions(-DMAKE_LIBQGIT2_LIB)
 add_library(qgit2 ${SRC} ${QGIT2_HEADERS} ${QGIT2_PRIVATE_HEADERS})
-target_link_libraries(qgit2 PkgConfig::LIBGIT2 Qt5::Core Qt5::Network)
+target_link_libraries(qgit2 PkgConfig::LIBGIT2 Qt6::Core Qt6::Network)
 set_target_properties(qgit2 PROPERTIES VERSION ${LIBQGIT2_VERSION_STRING})
 set_target_properties(qgit2 PROPERTIES SOVERSION ${LIBQGIT2_SOVERSION})
 set_target_properties(qgit2 PROPERTIES AUTOMOC ON)

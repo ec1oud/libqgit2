@@ -2,9 +2,13 @@
 
 A Qt/C++ wrapper for libgit2
 
-A C++11 capable compiler is required to compile libqgit2.
+A C++11 capable compiler is required to compile libqgit2. This version has been
+ported to Qt 6, and currently builds with libgit2 version 1.7.1 at least. 
+There should be some API stability by now.
 
 ## Versioning
+
+*Note: old information follows; in practice, just try the master branch first.*
 
 The versioning schema is "vNUM1.NUM2.NUM3". The first part of the version, given by "NUM1.NUM2" follows the libgit2 supported version (so all 0.22.x versions of libqgit2 compile against libgit2 0.22.x). The third number increases with maintenance versions of libqgit2. Between maintenance versions only libqgit2 fixes are allowed (as long as libgit2 maintains its versioning schema).
 

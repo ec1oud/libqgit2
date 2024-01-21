@@ -22,6 +22,7 @@
 #include "libqgit2_export.h"
 #include "qgitcredentials.h"
 
+#include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
 
 struct git_remote;
