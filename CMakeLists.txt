@@ -98,6 +98,17 @@ set_target_properties(qgit2 PROPERTIES VERSION ${LIBQGIT2_VERSION_STRING})
 set_target_properties(qgit2 PROPERTIES SOVERSION ${LIBQGIT2_SOVERSION})
 set_target_properties(qgit2 PROPERTIES AUTOMOC ON)
 
+# CMake config file
+include(CMakePackageConfigHelpers)
+configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/QGit2Config.cmake.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/QGit2Config.cmake"
+        INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/QGit2"
+		PATH_VARS INSTALL_INC)
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/QGit2ConfigVersion.cmake
+  VERSION 0.22.1
+  COMPATIBILITY SameMajorVersion )
+
 # Install
 install(TARGETS qgit2
     RUNTIME DESTINATION ${INSTALL_BIN}
@@ -108,6 +119,8 @@ install(TARGETS qgit2
 install(FILES ${QGIT2_HEADERS} DESTINATION ${INSTALL_INC}/qgit2 COMPONENT Devel)
 install(FILES ${CMAKE_BINARY_DIR}/libqgit2_export.h DESTINATION ${INSTALL_INC}/qgit2 COMPONENT Devel)
 install(FILES qgit2.h DESTINATION ${INSTALL_INC} COMPONENT Devel)
+install(FILES QGit2Config.cmake DESTINATION ${INSTALL_LIB}/cmake/QGit2)
+install(FILES QGit2ConfigVersion.cmake DESTINATION ${INSTALL_LIB}/cmake/QGit2)
 
 #Packaging options
 set(CPACK_GENERATOR "RPM;TGZ")

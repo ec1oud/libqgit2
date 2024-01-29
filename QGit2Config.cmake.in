@@ -1,0 +1,5 @@
+set(QGIT2_VERSION 0.22.1)
+@PACKAGE_INIT@
+set_and_check(QGit2_INCLUDE_DIR "${PACKAGE_PREFIX_DIR}/@INSTALL_INC@")
+set(QGit2_LIBRARIES "qgit2")
+check_required_components(Foo)
